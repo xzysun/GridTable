@@ -58,6 +58,7 @@
     cell.label.text = [NSString stringWithFormat:@"%ld - %ld",(long)indexPath.section, (long)indexPath.row];
     cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     cell.contentView.layer.borderWidth = 0.5;
+    cell.contentView.backgroundColor = [UIColor whiteColor];
     return cell;
 }
 
@@ -70,6 +71,16 @@
 -(CGFloat)collectionView:(UICollectionView *)collectionView heightForRow:(NSInteger)row
 {
     return 60.0;
+}
+
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldRowFixed:(NSInteger)row
+{
+    return row == 0;
+}
+
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldColumnFixed:(NSInteger)column
+{
+    return column <= 1;
 }
 
 #pragma mark - Getter & Setter
