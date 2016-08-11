@@ -55,7 +55,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     GTCollectionViewTextCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GTCollectionViewTextCell" forIndexPath:indexPath];
-    cell.label.text = [NSString stringWithFormat:@"%ld - %ld",(long)indexPath.section, (long)indexPath.row];
+    cell.label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(indexPath.section), (long)(indexPath.row)];
     cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     cell.contentView.layer.borderWidth = 0.5;
     cell.contentView.backgroundColor = [UIColor whiteColor];
@@ -80,7 +80,12 @@
 
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldColumnFixed:(NSInteger)column
 {
-    return column <= 1;
+    return column <= 0;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"select item:%ld-%ld", (long)(indexPath.section), (long)(indexPath.item));
 }
 
 #pragma mark - Getter & Setter
