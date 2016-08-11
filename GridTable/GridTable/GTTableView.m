@@ -58,7 +58,10 @@
     cell.label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(indexPath.section), (long)(indexPath.row)];
     cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     cell.contentView.layer.borderWidth = 0.5;
-    cell.contentView.backgroundColor = [UIColor whiteColor];
+    cell.backgroundView = [UIView new];
+    cell.selectedBackgroundView = [UIView new];
+    cell.backgroundView.backgroundColor = [UIColor whiteColor];
+    cell.selectedBackgroundView.backgroundColor = [UIColor lightGrayColor];
     return cell;
 }
 
