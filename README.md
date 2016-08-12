@@ -8,7 +8,7 @@ An Excel-liked grid table for Objective-C
 ## Usage
 Create a ```GTTableView``` instance and add it to your view with a proper frame
 
-Implements the ```GTTableViewDelegat``` protocol to  handle custom cell content and selection events
+Implements the ```GTTableViewDelegate``` protocol to  handle custom cell content and selection events
 
 Convert your data into ```GTTableInfo``` object and set it to your table
 
