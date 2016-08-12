@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GTTableInfo.h"
 
 @interface GTTableView : UIView
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0677C1461D5C5ED0001792FE /* GTTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0677C1451D5C5ED0001792FE /* GTTableInfo.m */; };
 		06E274081D5C26FC0034D325 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E274071D5C26FC0034D325 /* main.m */; };
 		06E2740B1D5C26FC0034D325 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E2740A1D5C26FC0034D325 /* AppDelegate.m */; };
 		06E2740E1D5C26FC0034D325 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E2740D1D5C26FC0034D325 /* ViewController.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0677C1441D5C5ED0001792FE /* GTTableInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTTableInfo.h; sourceTree = "<group>"; };
+		0677C1451D5C5ED0001792FE /* GTTableInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTTableInfo.m; sourceTree = "<group>"; };
 		06E274031D5C26FC0034D325 /* GridTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06E274071D5C26FC0034D325 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		06E274091D5C26FC0034D325 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -98,6 +101,8 @@
 				06E274221D5C27E70034D325 /* GTCollectionViewLayout.m */,
 				06E274241D5C2A430034D325 /* GTCollectionViewTextCell.h */,
 				06E274251D5C2A430034D325 /* GTCollectionViewTextCell.m */,
+				0677C1441D5C5ED0001792FE /* GTTableInfo.h */,
+				0677C1451D5C5ED0001792FE /* GTTableInfo.m */,
 			);
 			path = GridTable;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				06E2740B1D5C26FC0034D325 /* AppDelegate.m in Sources */,
 				06E274261D5C2A430034D325 /* GTCollectionViewTextCell.m in Sources */,
 				06E274231D5C27E70034D325 /* GTCollectionViewLayout.m in Sources */,
+				0677C1461D5C5ED0001792FE /* GTTableInfo.m in Sources */,
 				06E274201D5C27B30034D325 /* GTTableView.m in Sources */,
 				06E274081D5C26FC0034D325 /* main.m in Sources */,
 			);
@@ -327,6 +333,7 @@
 				06E2741C1D5C26FC0034D325 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
