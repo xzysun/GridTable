@@ -10,16 +10,7 @@
 
 @implementation GTTableInfo
 
--(void)markCurrentSelectedCell:(GTTableCellInfo *)cell
-{
-    if (_currentSelectedCell == cell) {//same cell
-        return;
-    }
-    if (_currentSelectedCell) {
-        //clean old state
-    }
-    //add new state
-}
+
 @end
 
 @implementation GTTableRowInfo

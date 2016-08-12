@@ -9,13 +9,6 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    GTTableCellSelectionStateNone,
-    GTTableCellSelectionStateCell,
-    GTTableCellSelectionStateRow,
-    GTTableCellSelectionStateColumn,
-} GTTableCellSelectionState;
-
-typedef enum : NSUInteger {
     GTTableCellTypeText,
     GTTableCellTypeCustom,
 } GTTableCellType;
@@ -29,8 +22,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSArray<GTTableColumnInfo *> *columnInfos;
 @property (nonatomic, strong) NSArray<NSArray *> *cellInfos;
 
-@property (nonatomic, strong, readonly) GTTableCellInfo *currentSelectedCell;
--(void)markCurrentSelectedCell:(GTTableCellInfo *)cell;
 @end
 
 
@@ -40,6 +31,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL isRowFixed;
 @property (nonatomic, strong) UIColor *rowBackgroundColor;
 @property (nonatomic, strong) UIColor *rowSelectedBackgroundColor;
+@property (nonatomic, assign) BOOL selected;
 @end
 
 @interface GTTableColumnInfo : NSObject
@@ -48,6 +40,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL isColumnFixed;
 @property (nonatomic, strong) UIColor *columnBackgroundColor;
 @property (nonatomic, strong) UIColor *columnSelectedBackgroundColor;
+@property (nonatomic, assign) BOOL selected;
 @end
 
 @interface GTTableCellInfo : NSObject
@@ -57,6 +50,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, weak) GTTableColumnInfo *columnInfo;
 @property (nonatomic, strong) UIColor *cellBackgroundColor;
 @property (nonatomic, strong) UIColor *cellSelectedBackgroundColor;
-@property (nonatomic, assign) GTTableCellSelectionState selectionState;
+@property (nonatomic, assign) BOOL selected;
 @property (nonatomic, copy) NSString *customCellIdentifier;
 @end
