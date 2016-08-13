@@ -16,13 +16,13 @@
 #pragma mark - GTTableInfo
 @implementation GTTableInfo
 
-+(instancetype)tableInfoWithRows:(NSInteger)rows Columns:(NSInteger)columns
++(instancetype)tableInfoWithRows:(NSUInteger)rows Columns:(NSUInteger)columns
 {
     GTTableInfo *tableInfo = [[GTTableInfo alloc] initWithRows:rows Columns:columns];
     return tableInfo;
 }
 
--(instancetype)initWithRows:(NSInteger)rows Columns:(NSInteger)columns
+-(instancetype)initWithRows:(NSUInteger)rows Columns:(NSUInteger)columns
 {
     if (self = [super init]) {
         //init
@@ -96,7 +96,7 @@
     return columnInfo;
 }
 
--(void)removeRow:(NSInteger)row
+-(void)removeRow:(NSUInteger)row
 {
     NSMutableArray *tmpRowInfos = [_rowInofs mutableCopy];
     [tmpRowInfos removeObjectAtIndex:row];
@@ -106,7 +106,7 @@
     _cellInfos = [tmpTable copy];
 }
 
--(void)removeColumn:(NSInteger)column
+-(void)removeColumn:(NSUInteger)column
 {
     NSMutableArray *tmpColumnInfos = [_columnInfos mutableCopy];
     [tmpColumnInfos removeObjectAtIndex:column];
@@ -121,7 +121,7 @@
     _cellInfos = [tmpTable copy];
 }
 
--(GTTableCellInfo *)cellForRow:(NSInteger)row Column:(NSInteger)column
+-(GTTableCellInfo *)cellForRow:(NSUInteger)row Column:(NSUInteger)column
 {
     return [[_cellInfos objectAtIndex:row] objectAtIndex:column];
 }

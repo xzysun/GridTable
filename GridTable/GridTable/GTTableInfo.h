@@ -24,7 +24,7 @@ typedef void(^GTCellDataBuildBlock)(GTTableCellInfo *cellInfo, NSInteger row, NS
 @property (nonatomic, strong, readonly) NSArray<GTTableColumnInfo *> *columnInfos;
 @property (nonatomic, strong, readonly) NSArray<NSArray<GTTableCellInfo *> *> *cellInfos;
 
-+(instancetype)tableInfoWithRows:(NSInteger)rows Columns:(NSInteger)columns;
++(instancetype)tableInfoWithRows:(NSUInteger)rows Columns:(NSUInteger)columns;
 
 -(void)generateTableDataWithBlock:(GTCellDataBuildBlock)block;
 
@@ -32,11 +32,11 @@ typedef void(^GTCellDataBuildBlock)(GTTableCellInfo *cellInfo, NSInteger row, NS
 
 -(GTTableColumnInfo *)addColumnWithDataBuildBlock:(GTCellDataBuildBlock)block;
 
--(void)removeRow:(NSInteger)row;
+-(void)removeRow:(NSUInteger)row;
 
--(void)removeColumn:(NSInteger)column;
+-(void)removeColumn:(NSUInteger)column;
 
--(GTTableCellInfo *)cellForRow:(NSInteger)row Column:(NSInteger)column;
+-(GTTableCellInfo *)cellForRow:(NSUInteger)row Column:(NSUInteger)column;
 
 @end
 
