@@ -54,54 +54,83 @@
     }
 }
 
+-(void)setTableInfo:(GTTableInfo *)tableInfo
+{
+    _tableInfo = tableInfo;
+    [self.collectionView reloadData];
+}
+
+-(void)registerCustomCellClass:(Class)class WithIdentifier:(NSString *)identifier
+{
+    [self.collectionView registerClass:class forCellWithReuseIdentifier:identifier];
+}
+
 #pragma mark - Collection Datasource & Delegate
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 30;
+    return self.tableInfo.rowInofs.count;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 20;
+    return self.tableInfo.columnInfos.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    GTCollectionViewTextCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GTCollectionViewTextCell" forIndexPath:indexPath];
-    cell.label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(indexPath.section), (long)(indexPath.row)];
+    GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:indexPath.section Column:indexPath.item];
+    UICollectionViewCell *cell = nil;
+    if (cellInfo.cellIdentifier == nil || [cellInfo.cellIdentifier isEqualToString:kGridTableTextCellIdentifier]) {
+        //draw text cell
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GTCollectionViewTextCell" forIndexPath:indexPath];
+        ((GTCollectionViewTextCell *)cell).label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(indexPath.section), (long)(indexPath.row)];
+    } else {
+        //draw custom cell
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellInfo.cellIdentifier forIndexPath:indexPath];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:prepareCell:AtRow:Column:)]) {
+            [self.delegate tableView:self prepareCell:cell AtRow:indexPath.section Column:indexPath.item];
+        }
+    }
     cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     cell.contentView.layer.borderWidth = 0.5;
     cell.backgroundView = [UIView new];
     cell.selectedBackgroundView = [UIView new];
-    cell.backgroundView.backgroundColor = [UIColor whiteColor];
-    cell.selectedBackgroundView.backgroundColor = [UIColor lightGrayColor];
+#warning handle backgound and selection here!
+    cell.backgroundView.backgroundColor = cellInfo.cellBackgroundColor;
+    cell.selectedBackgroundView.backgroundColor = cellInfo.cellSelectedBackgroundColor;
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:didSelectCellAtRow:Column:)]) {
+        [self.delegate tableView:self didSelectCellAtRow:indexPath.section Column:indexPath.item];
+    }
 }
 
 #pragma mark - Layout Delegate
 -(CGFloat)collectionView:(UICollectionView *)collectionView widthForColumn:(NSInteger)column
 {
-    return 80.0;
+    GTTableColumnInfo *columnInfo = [self.tableInfo.columnInfos objectAtIndex:column];
+    return columnInfo.columnWidht;
 }
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView heightForRow:(NSInteger)row
 {
-    return 60.0;
+    GTTableRowInfo *rowInfo = [self.tableInfo.rowInofs objectAtIndex:row];
+    return rowInfo.rowHeight;
 }
 
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldRowFixed:(NSInteger)row
 {
-    return row == 0;
+    GTTableRowInfo *rowInfo = [self.tableInfo.rowInofs objectAtIndex:row];
+    return rowInfo.isRowFixed;
 }
 
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldColumnFixed:(NSInteger)column
 {
-    return column <= 0;
-}
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"select item:%ld-%ld", (long)(indexPath.section), (long)(indexPath.item));
+    GTTableColumnInfo *columnInfo = [self.tableInfo.columnInfos objectAtIndex:column];
+    return columnInfo.isColumnFixed;
 }
 
 #pragma mark - Getter & Setter

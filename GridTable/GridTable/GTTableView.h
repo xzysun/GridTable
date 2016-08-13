@@ -26,4 +26,5 @@
 
 -(void)reloadData;
 -(void)reloadCellAtRow:(NSUInteger)row Column:(NSUInteger)column;
+-(void)registerCustomCellClass:(Class)class WithIdentifier:(NSString *)identifier;
 @end
