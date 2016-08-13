@@ -8,22 +8,37 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum : NSUInteger {
-    GTTableCellTypeText,
-    GTTableCellTypeCustom,
-} GTTableCellType;
+static CGFloat const kGridTableDefaultRowHeight = 30.0;
+static CGFloat const kGridTableDefaultColumnWidth = 50.0;
+static NSString * const kGridTableTextCellIdentifier = @"kGridTableTextCellIdentifier";
 
 @class GTTableRowInfo;
 @class GTTableColumnInfo;
 @class GTTableCellInfo;
+
+typedef void(^GTCellDataBuildBlock)(GTTableCellInfo *cellInfo, NSInteger row, NSInteger column);
+
 @interface GTTableInfo : NSObject
 
-@property (nonatomic, strong) NSArray<GTTableRowInfo *> *rowInofs;
-@property (nonatomic, strong) NSArray<GTTableColumnInfo *> *columnInfos;
-@property (nonatomic, strong) NSArray<NSArray *> *cellInfos;
+@property (nonatomic, strong, readonly) NSArray<GTTableRowInfo *> *rowInofs;
+@property (nonatomic, strong, readonly) NSArray<GTTableColumnInfo *> *columnInfos;
+@property (nonatomic, strong, readonly) NSArray<NSArray<GTTableCellInfo *> *> *cellInfos;
+
++(instancetype)tableInfoWithRows:(NSInteger)rows Columns:(NSInteger)columns;
+
+-(void)generateTableDataWithBlock:(GTCellDataBuildBlock)block;
+
+-(GTTableRowInfo *)addRowWithDataBuildBlock:(GTCellDataBuildBlock)block;
+
+-(GTTableColumnInfo *)addColumnWithDataBuildBlock:(GTCellDataBuildBlock)block;
+
+-(void)removeRow:(NSInteger)row;
+
+-(void)removeColumn:(NSInteger)column;
+
+-(GTTableCellInfo *)cellForRow:(NSInteger)row Column:(NSInteger)column;
 
 @end
-
 
 @interface GTTableRowInfo : NSObject
 
@@ -45,11 +60,12 @@ typedef enum : NSUInteger {
 
 @interface GTTableCellInfo : NSObject
 
-@property (nonatomic, assign) GTTableCellType type;
-@property (nonatomic, weak) GTTableRowInfo *rowInfo;
-@property (nonatomic, weak) GTTableColumnInfo *columnInfo;
+@property (nonatomic, weak, readonly) GTTableRowInfo *rowInfo;
+@property (nonatomic, weak, readonly) GTTableColumnInfo *columnInfo;
 @property (nonatomic, strong) UIColor *cellBackgroundColor;
 @property (nonatomic, strong) UIColor *cellSelectedBackgroundColor;
 @property (nonatomic, assign) BOOL selected;
-@property (nonatomic, copy) NSString *customCellIdentifier;
+@property (nonatomic, copy) NSString *cellIdentifier;
+//@property (nonatomic, copy) NSString *cellClassName;
+@property (nonatomic, strong) NSDictionary *textAttribute;//for text cell
 @end
