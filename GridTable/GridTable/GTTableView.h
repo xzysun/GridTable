@@ -9,6 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "GTTableInfo.h"
 
+@class GTTableView;
+@protocol GTTableViewDelegate <NSObject>
+
+-(void)tableView:(GTTableView *)tableView didSelectCellAtRow:(NSInteger)row Column:(NSInteger)column;
+
+@optional
+-(void)tableView:(GTTableView *)tableView prepareCell:(UICollectionViewCell *)cell AtRow:(NSInteger)row Column:(NSInteger)column;
+
+@end
+
 @interface GTTableView : UIView
 
+@property (nonatomic, weak) id<GTTableViewDelegate> delegate;
+@property (nonatomic, strong) GTTableInfo *tableInfo;
+
+-(void)reloadData;
+-(void)reloadCellAtRow:(NSUInteger)row Column:(NSUInteger)column;
 @end

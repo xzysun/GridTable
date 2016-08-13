@@ -41,6 +41,19 @@
     self.collectionView.frame = self.bounds;
 }
 
+#pragma mark - Public APIs
+-(void)reloadData
+{
+    [self.collectionView reloadData];
+}
+
+-(void)reloadCellAtRow:(NSUInteger)row Column:(NSUInteger)column
+{
+    if (self.tableInfo && row < self.tableInfo.rowInofs.count && column < self.tableInfo.columnInfos.count) {
+        [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:column inSection:row]]];
+    }
+}
+
 #pragma mark - Collection Datasource & Delegate
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
