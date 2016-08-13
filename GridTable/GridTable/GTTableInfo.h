@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-static CGFloat const kGridTableDefaultRowHeight = 30.0;
-static CGFloat const kGridTableDefaultColumnWidth = 50.0;
+static CGFloat const kGridTableDefaultRowHeight = 40.0;
+static CGFloat const kGridTableDefaultColumnWidth = 60.0;
 static NSString * const kGridTableTextCellIdentifier = @"kGridTableTextCellIdentifier";
 
 @class GTTableRowInfo;
@@ -26,7 +26,7 @@ typedef void(^GTCellDataBuildBlock)(GTTableCellInfo *cellInfo, NSInteger row, NS
 
 +(instancetype)tableInfoWithRows:(NSUInteger)rows Columns:(NSUInteger)columns;
 
--(void)generateTableDataWithBlock:(GTCellDataBuildBlock)block;
+-(void)buildTableCellInfoWithBlock:(GTCellDataBuildBlock)block;
 
 -(GTTableRowInfo *)addRowWithDataBuildBlock:(GTCellDataBuildBlock)block;
 

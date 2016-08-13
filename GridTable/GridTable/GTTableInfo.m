@@ -32,7 +32,7 @@
 }
 
 #pragma mark - Data Management
--(void)generateTableDataWithBlock:(GTCellDataBuildBlock)block
+-(void)buildTableCellInfoWithBlock:(GTCellDataBuildBlock)block
 {
     NSAssert(block, @"build block is needed!!");
     NSInteger rowsCount = self.rowInofs.count;
@@ -181,12 +181,38 @@
         //init
         _rowInfo = rowInfo;
         _columnInfo = colunmInfo;
-        _cellBackgroundColor = [UIColor whiteColor];
-        _cellSelectedBackgroundColor = [UIColor lightGrayColor];
         _cellIdentifier = kGridTableTextCellIdentifier;
 //        _cellClassName = @"GTCollectionViewTextCell";
     }
     return self;
+}
+
+-(UIColor *)cellBackgroundColor
+{
+    if (_cellBackgroundColor) {
+        return _cellBackgroundColor;
+    }
+    if (self.rowInfo && self.rowInfo.rowBackgroundColor) {
+        return self.rowInfo.rowBackgroundColor;
+    }
+    if (self.columnInfo && self.columnInfo.columnBackgroundColor) {
+        return self.columnInfo.columnBackgroundColor;
+    }
+    return [UIColor whiteColor];
+}
+
+-(UIColor *)cellSelectedBackgroundColor
+{
+    if (_cellSelectedBackgroundColor) {
+        return _cellSelectedBackgroundColor;
+    }
+    if (self.rowInfo && self.rowInfo.rowSelectedBackgroundColor) {
+        return self.rowInfo.rowSelectedBackgroundColor;
+    }
+    if (self.columnInfo && self.columnInfo.columnBackgroundColor) {
+        return self.columnInfo.columnSelectedBackgroundColor;
+    }
+    return [UIColor lightGrayColor];
 }
 
 @end
