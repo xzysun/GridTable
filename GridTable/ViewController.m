@@ -25,8 +25,7 @@
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     GTTableInfo *info = [GTTableInfo tableInfoWithRows:30 Columns:20];
-    info.rowInofs.firstObject.isRowFixed = YES;
-    info.columnInfos.firstObject.isColumnFixed = YES;
+    [info setFixedRowCount:1 FixedColumnCount:1];
     [info buildTableCellInfoWithBlock:^(GTTableCellInfo *cellInfo, NSInteger row, NSInteger column) {
         //
     }];

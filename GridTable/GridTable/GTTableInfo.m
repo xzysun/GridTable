@@ -8,6 +8,16 @@
 
 #import "GTTableInfo.h"
 
+@interface GTTableRowInfo ()
+
+-(void)setFixed:(BOOL)fixed;
+@end
+
+@interface GTTableColumnInfo ()
+
+-(void)setFixed:(BOOL)fixed;
+@end
+
 @interface GTTableCellInfo ()
 
 -(instancetype)initWithRowInfo:(GTTableRowInfo *)rowInfo ColumnInfo:(GTTableColumnInfo *)colunmInfo;
@@ -121,6 +131,30 @@
     _cellInfos = [tmpTable copy];
 }
 
+-(void)setFixedRowCount:(NSUInteger)fixedRowCount FixedColumnCount:(NSUInteger)fixedColumnCount
+{
+    NSAssert(fixedRowCount < self.rowInofs.count, @"fixed row count greater than row count!");
+    NSAssert(fixedColumnCount < self.columnInfos.count, @"fixed column count greater than column count!");
+    NSInteger rowsCount = self.rowInofs.count;
+    NSInteger columnsCount = self.columnInfos.count;
+    for (NSInteger row = 0; row < rowsCount; row ++) {
+        GTTableRowInfo *rowInfo = [self.rowInofs objectAtIndex:row];
+        if (row < fixedRowCount) {
+            [rowInfo setFixed:YES];
+        } else {
+            [rowInfo setFixed:NO];
+        }
+    }
+    for (NSInteger column = 0; column < columnsCount; column ++) {
+        GTTableColumnInfo *columnInfo = [self.columnInfos objectAtIndex:column];
+        if (column < fixedColumnCount) {
+            [columnInfo setFixed:YES];
+        } else {
+            [columnInfo setFixed:NO];
+        }
+    }
+}
+
 -(GTTableCellInfo *)cellForRow:(NSUInteger)row Column:(NSUInteger)column
 {
     return [[_cellInfos objectAtIndex:row] objectAtIndex:column];
@@ -156,6 +190,10 @@
     return self;
 }
 
+-(void)setFixed:(BOOL)fixed
+{
+    _isRowFixed = fixed;
+}
 @end
 
 #pragma mark - GTTableColumnInfo
@@ -170,6 +208,10 @@
     return self;
 }
 
+-(void)setFixed:(BOOL)fixed
+{
+    _isColumnFixed = fixed;
+}
 @end
 
 #pragma mark - GTTableCellInfo

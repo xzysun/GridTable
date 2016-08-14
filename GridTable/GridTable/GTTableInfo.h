@@ -36,6 +36,8 @@ typedef void(^GTCellDataBuildBlock)(GTTableCellInfo *cellInfo, NSInteger row, NS
 
 -(void)removeColumn:(NSUInteger)column;
 
+-(void)setFixedRowCount:(NSUInteger)fixedRowCount FixedColumnCount:(NSUInteger)fixedColumnCount;
+
 -(GTTableCellInfo *)cellForRow:(NSUInteger)row Column:(NSUInteger)column;
 
 @end
@@ -43,7 +45,7 @@ typedef void(^GTCellDataBuildBlock)(GTTableCellInfo *cellInfo, NSInteger row, NS
 @interface GTTableRowInfo : NSObject
 
 @property (nonatomic, assign) CGFloat rowHeight;
-@property (nonatomic, assign) BOOL isRowFixed;
+@property (nonatomic, assign, readonly) BOOL isRowFixed;
 @property (nonatomic, strong) UIColor *rowBackgroundColor;
 @property (nonatomic, strong) UIColor *rowSelectedBackgroundColor;
 @property (nonatomic, assign) BOOL selected;
@@ -52,7 +54,7 @@ typedef void(^GTCellDataBuildBlock)(GTTableCellInfo *cellInfo, NSInteger row, NS
 @interface GTTableColumnInfo : NSObject
 
 @property (nonatomic, assign) CGFloat columnWidht;
-@property (nonatomic, assign) BOOL isColumnFixed;
+@property (nonatomic, assign, readonly) BOOL isColumnFixed;
 @property (nonatomic, strong) UIColor *columnBackgroundColor;
 @property (nonatomic, strong) UIColor *columnSelectedBackgroundColor;
 @property (nonatomic, assign) BOOL selected;
