@@ -159,12 +159,12 @@
     if (cellInfo.cellIdentifier == nil || [cellInfo.cellIdentifier isEqualToString:kGridTableTextCellIdentifier]) {
         //draw text cell
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GTCollectionViewTextCell" forIndexPath:indexPath];
-        ((GTCollectionViewTextCell *)cell).label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(indexPath.section), (long)(indexPath.row)];
+        ((GTCollectionViewTextCell *)cell).label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(row), (long)(column)];
     } else {
         //draw custom cell
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellInfo.cellIdentifier forIndexPath:indexPath];
         if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:prepareCell:AtRow:Column:)]) {
-            [self.delegate tableView:self prepareCell:cell AtRow:indexPath.section Column:indexPath.item];
+            [self.delegate tableView:self prepareCell:cell AtRow:row Column:column];
         }
     }
     cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
