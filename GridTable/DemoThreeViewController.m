@@ -23,8 +23,12 @@
     self.tableView = [[GTTableView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-64.0)];
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
-    GTTableInfo *info = [GTTableInfo tableInfoWithRows:50 Columns:6];
-    [info setFixedRowCount:1 FixedColumnCount:0];
+    GTTableInfo *info = [GTTableInfo tableInfoWithRows:50 Columns:5];
+//    [info setFixedRowCount:1 FixedColumnCount:0];
+    CGFloat columnWidth = CGRectGetWidth(self.view.frame)/info.columnInfos.count;
+    [info.columnInfos enumerateObjectsUsingBlock:^(GTTableColumnInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.columnWidth = columnWidth;
+    }];
     info.columnInfos.lastObject.columnWidth = 75.0;
     [info buildTableCellInfoWithBlock:^(GTTableCellInfo *cellInfo, NSInteger row, NSInteger column) {
         //
