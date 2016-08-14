@@ -27,6 +27,10 @@
     BOOL delegateRowFixFlag = (self.delegate && [self.delegate respondsToSelector:@selector(collectionView:shouldRowFixed:)]);
     BOOL delegateColumnFixFlag = (self.delegate && [self.delegate respondsToSelector:@selector(collectionView:shouldColumnFixed:)]);
     NSInteger rowsCount = [self.collectionView numberOfSections];
+    if (rowsCount == 0) {
+        self.layoutInfo = [NSDictionary dictionary];
+        return;
+    }
     NSInteger columnsCount = [self.collectionView numberOfItemsInSection:0];
     CGFloat originY = 0.0;
     CGFloat fixedOriginY = 0.0;
@@ -113,6 +117,11 @@
 -(void)calculateTotalWidthAndHeight
 {
     NSInteger rowsCount = [self.collectionView numberOfSections];
+    if (rowsCount == 0) {
+        self.totalWidth = 0.0;
+        self.totalHeight = 0.0;
+        return;
+    }
     NSInteger columnsCount = [self.collectionView numberOfItemsInSection:0];
     CGFloat totalWidth = 0.0;
     CGFloat totalHeight = 0.0;
