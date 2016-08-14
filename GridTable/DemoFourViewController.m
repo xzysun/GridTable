@@ -1,34 +1,33 @@
 //
-//  DemoThreeViewController.m
+//  DemoFourViewController.m
 //  GridTable
 //
 //  Created by xzysun on 16/8/14.
 //  Copyright © 2016年 AnyApps. All rights reserved.
 //
 
-#import "DemoThreeViewController.h"
+#import "DemoFourViewController.h"
 #import "GTTableView.h"
 
-@interface DemoThreeViewController () <GTTableViewDelegate>
+@interface DemoFourViewController () <GTTableViewDelegate>
 
-@property (nonatomic, strong) GTTableView *tableView;
+@property (weak, nonatomic) IBOutlet GTTableView *tableView;
 @end
 
-@implementation DemoThreeViewController
+@implementation DemoFourViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tableView = [[GTTableView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-64.0)];
-    [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
-    GTTableInfo *info = [GTTableInfo tableInfoWithRows:50 Columns:6];
-    [info setFixedRowCount:1 FixedColumnCount:0];
-    info.columnInfos.lastObject.columnWidth = 75.0;
+    GTTableInfo *info = [GTTableInfo tableInfoWithRows:300 Columns:60];
+    [info setFixedRowCount:2 FixedColumnCount:1];
     [info buildTableCellInfoWithBlock:^(GTTableCellInfo *cellInfo, NSInteger row, NSInteger column) {
         //
     }];
+    info.rowInofs.firstObject.rowBackgroundColor = [UIColor greenColor];
+    info.columnInfos.firstObject.columnBackgroundColor = [UIColor blueColor];
     self.tableView.tableInfo = info;
 }
 

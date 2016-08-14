@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.delegate = self;
     GTTableInfo *info = [GTTableInfo tableInfoWithRows:50 Columns:30];
     [info buildTableCellInfoWithBlock:^(GTTableCellInfo *cellInfo, NSInteger row, NSInteger column) {
@@ -46,6 +47,6 @@
 #pragma mark - TableView Delegate
 -(void)tableView:(GTTableView *)tableView didSelectCellAtRow:(NSInteger)row Column:(NSInteger)column
 {
-    NSLog(@"tableview didSelectCell:%lu-%lu", row, column);
+    NSLog(@"tableview didSelectCell:%lu-%lu", (long)row, (long)column);
 }
 @end

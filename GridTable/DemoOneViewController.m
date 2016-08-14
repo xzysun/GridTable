@@ -19,8 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tableView = [[GTTableView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-64.0)];
+    self.tableView = [[GTTableView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     GTTableInfo *info = [GTTableInfo tableInfoWithRows:50 Columns:30];
@@ -48,6 +47,6 @@
 #pragma mark - TableView Delegate
 -(void)tableView:(GTTableView *)tableView didSelectCellAtRow:(NSInteger)row Column:(NSInteger)column
 {
-    NSLog(@"tableview didSelectCell:%lu-%lu", row, column);
+    NSLog(@"tableview didSelectCell:%lu-%lu", (long)row, (long)column);
 }
 @end

@@ -11,6 +11,7 @@
 		0677C1491D60A040001792FE /* DemoOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0677C1481D60A03F001792FE /* DemoOneViewController.m */; };
 		0677C14C1D60A04F001792FE /* DemoTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0677C14B1D60A04F001792FE /* DemoTwoViewController.m */; };
 		0677C14F1D60A05B001792FE /* DemoThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0677C14E1D60A05B001792FE /* DemoThreeViewController.m */; };
+		0677C1521D60B3B3001792FE /* DemoFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0677C1511D60B3B3001792FE /* DemoFourViewController.m */; };
 		06E274081D5C26FC0034D325 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E274071D5C26FC0034D325 /* main.m */; };
 		06E2740B1D5C26FC0034D325 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E2740A1D5C26FC0034D325 /* AppDelegate.m */; };
 		06E274111D5C26FC0034D325 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06E2740F1D5C26FC0034D325 /* Main.storyboard */; };
@@ -30,6 +31,8 @@
 		0677C14B1D60A04F001792FE /* DemoTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTwoViewController.m; sourceTree = "<group>"; };
 		0677C14D1D60A05B001792FE /* DemoThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoThreeViewController.h; sourceTree = "<group>"; };
 		0677C14E1D60A05B001792FE /* DemoThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoThreeViewController.m; sourceTree = "<group>"; };
+		0677C1501D60B3B3001792FE /* DemoFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoFourViewController.h; sourceTree = "<group>"; };
+		0677C1511D60B3B3001792FE /* DemoFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoFourViewController.m; sourceTree = "<group>"; };
 		06E274031D5C26FC0034D325 /* GridTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06E274071D5C26FC0034D325 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		06E274091D5C26FC0034D325 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				0677C14B1D60A04F001792FE /* DemoTwoViewController.m */,
 				0677C14D1D60A05B001792FE /* DemoThreeViewController.h */,
 				0677C14E1D60A05B001792FE /* DemoThreeViewController.m */,
+				0677C1501D60B3B3001792FE /* DemoFourViewController.h */,
+				0677C1511D60B3B3001792FE /* DemoFourViewController.m */,
 			);
 			path = GridTable;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0677C14C1D60A04F001792FE /* DemoTwoViewController.m in Sources */,
+				0677C1521D60B3B3001792FE /* DemoFourViewController.m in Sources */,
 				0677C1491D60A040001792FE /* DemoOneViewController.m in Sources */,
 				06E2740B1D5C26FC0034D325 /* AppDelegate.m in Sources */,
 				06E274261D5C2A430034D325 /* GTCollectionViewTextCell.m in Sources */,
