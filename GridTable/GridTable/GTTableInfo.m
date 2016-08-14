@@ -135,6 +135,8 @@
 {
     NSAssert(fixedRowCount < self.rowInofs.count, @"fixed row count greater than row count!");
     NSAssert(fixedColumnCount < self.columnInfos.count, @"fixed column count greater than column count!");
+    _fixRowCount = fixedRowCount;
+    _fixColumnCount = fixedColumnCount;
     NSInteger rowsCount = self.rowInofs.count;
     NSInteger columnsCount = self.columnInfos.count;
     for (NSInteger row = 0; row < rowsCount; row ++) {
@@ -203,7 +205,7 @@
 {
     if ( self = [super init]) {
         //init
-        _columnWidht = kGridTableDefaultColumnWidth;
+        _columnWidth = kGridTableDefaultColumnWidth;
     }
     return self;
 }

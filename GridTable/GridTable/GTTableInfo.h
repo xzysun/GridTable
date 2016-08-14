@@ -23,6 +23,8 @@ typedef void(^GTCellDataBuildBlock)(GTTableCellInfo *cellInfo, NSInteger row, NS
 @property (nonatomic, strong, readonly) NSArray<GTTableRowInfo *> *rowInofs;
 @property (nonatomic, strong, readonly) NSArray<GTTableColumnInfo *> *columnInfos;
 @property (nonatomic, strong, readonly) NSArray<NSArray<GTTableCellInfo *> *> *cellInfos;
+@property (nonatomic, assign, readonly) NSUInteger fixRowCount;
+@property (nonatomic, assign, readonly) NSUInteger fixColumnCount;
 
 +(instancetype)tableInfoWithRows:(NSUInteger)rows Columns:(NSUInteger)columns;
 
@@ -53,7 +55,7 @@ typedef void(^GTCellDataBuildBlock)(GTTableCellInfo *cellInfo, NSInteger row, NS
 
 @interface GTTableColumnInfo : NSObject
 
-@property (nonatomic, assign) CGFloat columnWidht;
+@property (nonatomic, assign) CGFloat columnWidth;
 @property (nonatomic, assign, readonly) BOOL isColumnFixed;
 @property (nonatomic, strong) UIColor *columnBackgroundColor;
 @property (nonatomic, strong) UIColor *columnSelectedBackgroundColor;

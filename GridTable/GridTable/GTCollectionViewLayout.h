@@ -13,9 +13,6 @@
 -(CGFloat)collectionView:(UICollectionView *)collectionView widthForColumn:(NSInteger)column;
 -(CGFloat)collectionView:(UICollectionView *)collectionView heightForRow:(NSInteger)row;
 
--(BOOL)collectionView:(UICollectionView *)collectionView shouldRowFixed:(NSInteger)row;
--(BOOL)collectionView:(UICollectionView *)collectionView shouldColumnFixed:(NSInteger)column;
-
 @end
 
 @interface GTCollectionViewLayout : UICollectionViewLayout
