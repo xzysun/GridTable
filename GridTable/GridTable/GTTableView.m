@@ -165,8 +165,8 @@
     } else {
         //draw custom cell
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellInfo.cellIdentifier forIndexPath:indexPath];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:prepareCell:AtRow:Column:)]) {
-            [self.delegate tableView:self prepareCell:cell AtRow:row Column:column];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:prepareCustomCell:AtRow:Column:)]) {
+            [self.delegate tableView:self prepareCustomCell:cell AtRow:row Column:column];
         }
     }
     cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;

@@ -17,7 +17,7 @@
 
 @optional
 -(void)tableview:(GTTableView *)tableview prepareTextCell:(GTCollectionViewTextCell *)textCell AtRow:(NSInteger)row Column:(NSInteger)column;
--(void)tableView:(GTTableView *)tableView prepareCell:(UICollectionViewCell *)cell AtRow:(NSInteger)row Column:(NSInteger)column;
+-(void)tableView:(GTTableView *)tableView prepareCustomCell:(UICollectionViewCell *)cell AtRow:(NSInteger)row Column:(NSInteger)column;
 
 @end
 
