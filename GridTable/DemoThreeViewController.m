@@ -56,4 +56,9 @@
 {
     NSLog(@"tableview didSelectCell:%lu-%lu", (long)row, (long)column);
 }
+
+-(void)tableview:(GTTableView *)tableview prepareTextCell:(GTCollectionViewTextCell *)textCell AtRow:(NSInteger)row Column:(NSInteger)column
+{
+    textCell.label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(row), (long)(column)];
+}
 @end
