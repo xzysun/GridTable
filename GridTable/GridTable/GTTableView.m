@@ -73,23 +73,23 @@
     [self.fixColumnTable reloadData];
 }
 
--(void)reloadCellAtRow:(NSUInteger)row Column:(NSUInteger)column
+-(void)reloadCellAtPosition:(GTCellPosition)position
 {
-    if (self.tableInfo && row < self.tableInfo.rowInofs.count && column < self.tableInfo.columnInfos.count) {
+    if (self.tableInfo && position.row < self.tableInfo.rowInofs.count && position.column < self.tableInfo.columnInfos.count) {
         NSUInteger fixRowCount = self.tableInfo.fixRowCount;
         NSUInteger fixColumnCount = self.tableInfo.fixColumnCount;
-        if (row < fixRowCount && column < fixColumnCount) {
+        if (position.row < fixRowCount && position.column < fixColumnCount) {
             //reload header
-            [self.headerTable reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:column inSection:row]]];
-        } else if (row < fixRowCount &&  column > fixColumnCount) {
+            [self.headerTable reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:position.column inSection:position.row]]];
+        } else if (position.row < fixRowCount &&  position.column > fixColumnCount) {
             //reload fix row
-            [self.fixRowTable reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:column-fixColumnCount inSection:row]]];
-        } else if (row > fixRowCount && column < fixColumnCount) {
+            [self.fixRowTable reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:position.column-fixColumnCount inSection:position.row]]];
+        } else if (position.row > fixRowCount && position.column < fixColumnCount) {
             //reload fix column
-            [self.fixColumnTable reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:column inSection:row-fixRowCount]]];
+            [self.fixColumnTable reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:position.column inSection:position.row-fixRowCount]]];
         } else {
             //reload main table
-            [self.mainTable reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:column-fixColumnCount inSection:row-fixRowCount]]];
+            [self.mainTable reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:position.column-fixColumnCount inSection:position.row-fixRowCount]]];
         }
     }
 }
@@ -106,6 +106,27 @@
     [self.fixRowTable registerClass:class forCellWithReuseIdentifier:identifier];
     [self.fixColumnTable registerClass:class forCellWithReuseIdentifier:identifier];
     [self.mainTable registerClass:class forCellWithReuseIdentifier:identifier];
+}
+
+#pragma mark - Private Mehtod
+-(GTCellPosition)convertPosition:(UICollectionView *)collectionView FromIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = 0;
+    NSInteger column = 0;
+    if (collectionView == self.headerTable) {
+        row = indexPath.section;
+        column = indexPath.item;
+    } else if (collectionView == self.fixRowTable) {
+        row = indexPath.section;
+        column = indexPath.item + self.tableInfo.fixColumnCount;
+    } else if (collectionView == self.fixColumnTable) {
+        row = indexPath.section + self.tableInfo.fixRowCount;
+        column = indexPath.item;
+    } else {
+        row = indexPath.section + self.tableInfo.fixRowCount;
+        column = indexPath.item + self.tableInfo.fixColumnCount;
+    }
+    return GTPositionMake(row, column);
 }
 
 #pragma mark - Collection Datasource & Delegate
@@ -139,34 +160,20 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger row = 0;
-    NSInteger column = 0;
-    if (collectionView == self.headerTable) {
-        row = indexPath.section;
-        column = indexPath.item;
-    } else if (collectionView == self.fixRowTable) {
-        row = indexPath.section;
-        column = indexPath.item + self.tableInfo.fixColumnCount;
-    } else if (collectionView == self.fixColumnTable) {
-        row = indexPath.section + self.tableInfo.fixRowCount;
-        column = indexPath.item;
-    } else {
-        row = indexPath.section + self.tableInfo.fixRowCount;
-        column = indexPath.item + self.tableInfo.fixColumnCount;
-    }
-    GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:row Column:column];
+    GTCellPosition position = [self convertPosition:collectionView FromIndexPath:indexPath];
+    GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:position.row Column:position.column];
     UICollectionViewCell *cell = nil;
     if (cellInfo.cellIdentifier == nil || [cellInfo.cellIdentifier isEqualToString:kGridTableTextCellIdentifier]) {
         //draw text cell
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GTCollectionViewTextCell" forIndexPath:indexPath];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(tableview:prepareTextCell:AtRow:Column:)]) {
-            [self.delegate tableview:self prepareTextCell:(GTCollectionViewTextCell *)cell AtRow:row Column:column];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(tableview:prepareTextCell:At:)]) {
+            [self.delegate tableview:self prepareTextCell:(GTCollectionViewTextCell *)cell At:position];
         }
     } else {
         //draw custom cell
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellInfo.cellIdentifier forIndexPath:indexPath];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:prepareCustomCell:AtRow:Column:)]) {
-            [self.delegate tableView:self prepareCustomCell:cell AtRow:row Column:column];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:prepareCustomCell:At:)]) {
+            [self.delegate tableView:self prepareCustomCell:cell At:position];
         }
     }
     cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -185,46 +192,18 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger row = 0;
-    NSInteger column = 0;
-    if (collectionView == self.headerTable) {
-        row = indexPath.section;
-        column = indexPath.item;
-    } else if (collectionView == self.fixRowTable) {
-        row = indexPath.section;
-        column = indexPath.item + self.tableInfo.fixColumnCount;
-    } else if (collectionView == self.fixColumnTable) {
-        row = indexPath.section + self.tableInfo.fixRowCount;
-        column = indexPath.item;
-    } else {
-        row = indexPath.section + self.tableInfo.fixRowCount;
-        column = indexPath.item + self.tableInfo.fixColumnCount;
-    }
-    GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:row Column:column];
+    GTCellPosition position = [self convertPosition:collectionView FromIndexPath:indexPath];
+    GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:position.row Column:position.column];
     cellInfo.selected = YES;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:didSelectCellAtRow:Column:)]) {
-        [self.delegate tableView:self didSelectCellAtRow:row Column:column];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:didSelectCellAt:)]) {
+        [self.delegate tableView:self didSelectCellAt:position];
     }
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger row = 0;
-    NSInteger column = 0;
-    if (collectionView == self.headerTable) {
-        row = indexPath.section;
-        column = indexPath.item;
-    } else if (collectionView == self.fixRowTable) {
-        row = indexPath.section;
-        column = indexPath.item + self.tableInfo.fixColumnCount;
-    } else if (collectionView == self.fixColumnTable) {
-        row = indexPath.section + self.tableInfo.fixRowCount;
-        column = indexPath.item;
-    } else {
-        row = indexPath.section + self.tableInfo.fixRowCount;
-        column = indexPath.item + self.tableInfo.fixColumnCount;
-    }
-    GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:row Column:column];
+    GTCellPosition position = [self convertPosition:collectionView FromIndexPath:indexPath];
+    GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:position.row Column:position.column];
     cellInfo.selected = NO;
 }
 

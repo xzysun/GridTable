@@ -9,15 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "GTTableInfo.h"
 #import "GTCollectionViewTextCell.h"
+#import "GTCellPosition.h"
 
 @class GTTableView;
 @protocol GTTableViewDelegate <NSObject>
 
--(void)tableView:(GTTableView *)tableView didSelectCellAtRow:(NSInteger)row Column:(NSInteger)column;
+-(void)tableView:(GTTableView *)tableView didSelectCellAt:(GTCellPosition)position;
 
 @optional
--(void)tableview:(GTTableView *)tableview prepareTextCell:(GTCollectionViewTextCell *)textCell AtRow:(NSInteger)row Column:(NSInteger)column;
--(void)tableView:(GTTableView *)tableView prepareCustomCell:(UICollectionViewCell *)cell AtRow:(NSInteger)row Column:(NSInteger)column;
+-(void)tableview:(GTTableView *)tableview prepareTextCell:(GTCollectionViewTextCell *)textCell At:(GTCellPosition)position;
+-(void)tableView:(GTTableView *)tableView prepareCustomCell:(UICollectionViewCell *)cell At:(GTCellPosition)position;
 
 @end
 
@@ -27,6 +28,6 @@
 @property (nonatomic, strong) GTTableInfo *tableInfo;
 
 -(void)reloadData;
--(void)reloadCellAtRow:(NSUInteger)row Column:(NSUInteger)column;
+-(void)reloadCellAtPosition:(GTCellPosition)position;
 -(void)registerCustomCellClass:(Class)class WithIdentifier:(NSString *)identifier;
 @end

@@ -45,13 +45,13 @@
 */
 
 #pragma mark - TableView Delegate
--(void)tableView:(GTTableView *)tableView didSelectCellAtRow:(NSInteger)row Column:(NSInteger)column
+-(void)tableView:(GTTableView *)tableView didSelectCellAt:(GTCellPosition)position
 {
-    NSLog(@"tableview didSelectCell:%lu-%lu", (long)row, (long)column);
+    NSLog(@"tableview didSelectCell:%@", NSStringFromGTCellPosition(position));
 }
 
--(void)tableview:(GTTableView *)tableview prepareTextCell:(GTCollectionViewTextCell *)textCell AtRow:(NSInteger)row Column:(NSInteger)column
+-(void)tableview:(GTTableView *)tableview prepareTextCell:(GTCollectionViewTextCell *)textCell At:(GTCellPosition)position
 {
-    textCell.label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(row), (long)(column)];
+    textCell.label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(position.row), (long)(position.column)];
 }
 @end
