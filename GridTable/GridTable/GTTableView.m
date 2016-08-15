@@ -328,6 +328,7 @@
         [_fixRowTable registerClass:[GTCollectionViewTextCell class] forCellWithReuseIdentifier:@"GTCollectionViewTextCell"];
         _fixRowTable.alwaysBounceVertical = NO;
         _fixRowTable.showsHorizontalScrollIndicator = NO;
+        _fixRowTable.scrollsToTop = NO;
     }
     return _fixRowTable;
 }
@@ -343,6 +344,7 @@
         [_fixColumnTable registerClass:[GTCollectionViewTextCell class] forCellWithReuseIdentifier:@"GTCollectionViewTextCell"];
         _fixColumnTable.alwaysBounceHorizontal = NO;
         _fixColumnTable.showsVerticalScrollIndicator = NO;
+        _fixColumnTable.scrollsToTop = NO;
     }
     return _fixColumnTable;
 }
@@ -357,6 +359,7 @@
         [self addSubview:_headerTable];
         [_headerTable registerClass:[GTCollectionViewTextCell class] forCellWithReuseIdentifier:@"GTCollectionViewTextCell"];
         _headerTable.bounces = NO;
+        _headerTable.scrollsToTop = NO;
     }
     return _headerTable;
 }
