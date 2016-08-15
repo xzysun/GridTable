@@ -159,7 +159,9 @@
     if (cellInfo.cellIdentifier == nil || [cellInfo.cellIdentifier isEqualToString:kGridTableTextCellIdentifier]) {
         //draw text cell
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GTCollectionViewTextCell" forIndexPath:indexPath];
-        ((GTCollectionViewTextCell *)cell).label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(row), (long)(column)];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(tableview:prepareTextCell:AtRow:Column:)]) {
+            [self.delegate tableview:self prepareTextCell:(GTCollectionViewTextCell *)cell AtRow:row Column:column];
+        }
     } else {
         //draw custom cell
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellInfo.cellIdentifier forIndexPath:indexPath];
