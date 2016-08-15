@@ -200,9 +200,32 @@
         row = indexPath.section + self.tableInfo.fixRowCount;
         column = indexPath.item + self.tableInfo.fixColumnCount;
     }
+    GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:row Column:column];
+    cellInfo.selected = YES;
     if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:didSelectCellAtRow:Column:)]) {
         [self.delegate tableView:self didSelectCellAtRow:row Column:column];
     }
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = 0;
+    NSInteger column = 0;
+    if (collectionView == self.headerTable) {
+        row = indexPath.section;
+        column = indexPath.item;
+    } else if (collectionView == self.fixRowTable) {
+        row = indexPath.section;
+        column = indexPath.item + self.tableInfo.fixColumnCount;
+    } else if (collectionView == self.fixColumnTable) {
+        row = indexPath.section + self.tableInfo.fixRowCount;
+        column = indexPath.item;
+    } else {
+        row = indexPath.section + self.tableInfo.fixRowCount;
+        column = indexPath.item + self.tableInfo.fixColumnCount;
+    }
+    GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:row Column:column];
+    cellInfo.selected = NO;
 }
 
 #pragma mark - Layout Delegate
