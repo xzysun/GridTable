@@ -73,7 +73,7 @@
     [self.fixColumnTable reloadData];
 }
 
--(void)reloadCellAtPosition:(GTCellPosition)position
+-(void)reloadCellAtPosition:(GTPosition)position
 {
     if (self.tableInfo && position.row < self.tableInfo.rowInofs.count && position.column < self.tableInfo.columnInfos.count) {
         NSUInteger fixRowCount = self.tableInfo.fixRowCount;
@@ -109,7 +109,7 @@
 }
 
 #pragma mark - Private Mehtod
--(GTCellPosition)convertPosition:(UICollectionView *)collectionView FromIndexPath:(NSIndexPath *)indexPath
+-(GTPosition)convertPosition:(UICollectionView *)collectionView FromIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = 0;
     NSInteger column = 0;
@@ -160,20 +160,20 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    GTCellPosition position = [self convertPosition:collectionView FromIndexPath:indexPath];
+    GTPosition position = [self convertPosition:collectionView FromIndexPath:indexPath];
     GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:position.row Column:position.column];
     UICollectionViewCell *cell = nil;
     if (cellInfo.cellIdentifier == nil || [cellInfo.cellIdentifier isEqualToString:kGridTableTextCellIdentifier]) {
         //draw text cell
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GTCollectionViewTextCell" forIndexPath:indexPath];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(tableview:prepareTextCell:At:)]) {
-            [self.delegate tableview:self prepareTextCell:(GTCollectionViewTextCell *)cell At:position];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(tableview:prepareTextCell:AtPosition:)]) {
+            [self.delegate tableview:self prepareTextCell:(GTCollectionViewTextCell *)cell AtPosition:position];
         }
     } else {
         //draw custom cell
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellInfo.cellIdentifier forIndexPath:indexPath];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:prepareCustomCell:At:)]) {
-            [self.delegate tableView:self prepareCustomCell:cell At:position];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:prepareCustomCell:AtPosition:)]) {
+            [self.delegate tableView:self prepareCustomCell:cell AtPosition:position];
         }
     }
     cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -192,17 +192,17 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    GTCellPosition position = [self convertPosition:collectionView FromIndexPath:indexPath];
+    GTPosition position = [self convertPosition:collectionView FromIndexPath:indexPath];
     GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:position.row Column:position.column];
     cellInfo.selected = YES;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:didSelectCellAt:)]) {
-        [self.delegate tableView:self didSelectCellAt:position];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:didSelectCellAtPosition:)]) {
+        [self.delegate tableView:self didSelectCellAtPosition:position];
     }
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    GTCellPosition position = [self convertPosition:collectionView FromIndexPath:indexPath];
+    GTPosition position = [self convertPosition:collectionView FromIndexPath:indexPath];
     GTTableCellInfo *cellInfo = [self.tableInfo cellForRow:position.row Column:position.column];
     cellInfo.selected = NO;
 }
