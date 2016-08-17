@@ -38,5 +38,7 @@ typedef enum : NSUInteger {
 
 -(void)reloadData;
 -(void)reloadCellAtPosition:(GTPosition)position;
+-(void)reloadRowData:(NSUInteger)row;
+-(void)reloadColumnData:(NSUInteger)column;
 -(void)registerCustomCellClass:(Class)class WithIdentifier:(NSString *)identifier;
 @end
