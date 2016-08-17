@@ -196,6 +196,17 @@
 {
     _isRowFixed = fixed;
 }
+
+//-(UIColor *)rowSelectedBackgroundColor
+//{
+//    if (_rowSelectedBackgroundColor) {
+//        return _rowSelectedBackgroundColor;
+//    }
+//    if (_selected) {
+//        return [UIColor lightGrayColor];
+//    }
+//    return nil;
+//}
 @end
 
 #pragma mark - GTTableColumnInfo
@@ -214,6 +225,17 @@
 {
     _isColumnFixed = fixed;
 }
+
+//-(UIColor *)columnSelectedBackgroundColor
+//{
+//    if (_columnSelectedBackgroundColor) {
+//        return _columnSelectedBackgroundColor;
+//    }
+//    if (_selected) {
+//        return [UIColor lightGrayColor];
+//    }
+//    return nil;
+//}
 @end
 
 #pragma mark - GTTableCellInfo
@@ -253,7 +275,7 @@
     if (self.rowInfo && self.rowInfo.rowSelectedBackgroundColor) {
         return self.rowInfo.rowSelectedBackgroundColor;
     }
-    if (self.columnInfo && self.columnInfo.columnBackgroundColor) {
+    if (self.columnInfo && self.columnInfo.columnSelectedBackgroundColor) {
         return self.columnInfo.columnSelectedBackgroundColor;
     }
     return [UIColor lightGrayColor];

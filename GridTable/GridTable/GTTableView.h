@@ -22,10 +22,19 @@
 
 @end
 
+typedef enum : NSUInteger {
+    GTTableViewSelectionTypeNone,
+    GTTableViewSelectionTypeCell,
+    GTTableViewSelectionTypeRow,
+    GTTableViewSelectionTypeColumn,
+} GTTableViewSelectionType;
+
 @interface GTTableView : UIView
 
 @property (nonatomic, weak) id<GTTableViewDelegate> delegate;
 @property (nonatomic, strong) GTTableInfo *tableInfo;
+@property (nonatomic, assign) GTTableViewSelectionType selectionType;
+@property (nonatomic, assign) BOOL allowsMultipleSelection;//not yet!
 
 -(void)reloadData;
 -(void)reloadCellAtPosition:(GTPosition)position;

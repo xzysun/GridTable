@@ -50,7 +50,7 @@ typedef void(^GTCellDataBuildBlock)(GTTableCellInfo *cellInfo, NSInteger row, NS
 @property (nonatomic, assign, readonly) BOOL isRowFixed;
 @property (nonatomic, strong) UIColor *rowBackgroundColor;
 @property (nonatomic, strong) UIColor *rowSelectedBackgroundColor;
-@property (nonatomic, assign) BOOL selected;
+@property (nonatomic, assign) BOOL selected;//used for row selection mode
 @end
 
 @interface GTTableColumnInfo : NSObject
@@ -59,7 +59,7 @@ typedef void(^GTCellDataBuildBlock)(GTTableCellInfo *cellInfo, NSInteger row, NS
 @property (nonatomic, assign, readonly) BOOL isColumnFixed;
 @property (nonatomic, strong) UIColor *columnBackgroundColor;
 @property (nonatomic, strong) UIColor *columnSelectedBackgroundColor;
-@property (nonatomic, assign) BOOL selected;
+@property (nonatomic, assign) BOOL selected;//used for column selection mode
 @end
 
 @interface GTTableCellInfo : NSObject
