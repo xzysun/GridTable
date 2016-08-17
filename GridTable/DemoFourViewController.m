@@ -27,8 +27,11 @@
         //
     }];
     info.rowInofs.firstObject.rowBackgroundColor = [UIColor greenColor];
+    info.rowInofs.firstObject.rowSelectedBackgroundColor = [UIColor yellowColor];
     info.columnInfos.firstObject.columnBackgroundColor = [UIColor blueColor];
+    info.columnInfos.firstObject.columnSelectedBackgroundColor = [UIColor purpleColor];
     self.tableView.tableInfo = info;
+    self.tableView.selectionType = GTTableViewSelectionTypeCell;
 }
 
 - (void)didReceiveMemoryWarning {
