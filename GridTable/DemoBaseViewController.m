@@ -1,31 +1,22 @@
 //
-//  DemoTwoViewController.m
+//  DemoBaseViewController.m
 //  GridTable
 //
-//  Created by xzysun on 16/8/14.
+//  Created by xzysun on 16/8/18.
 //  Copyright © 2016年 AnyApps. All rights reserved.
 //
 
-#import "DemoTwoViewController.h"
+#import "DemoBaseViewController.h"
 
-@interface DemoTwoViewController ()
+@interface DemoBaseViewController ()
 
-@property (weak, nonatomic) IBOutlet GTTableView *tableView;
 @end
 
-@implementation DemoTwoViewController
+@implementation DemoBaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tableView.delegate = self;
-    GTTableInfo *info = [GTTableInfo tableInfoWithRows:50 Columns:30];
-    [info buildTableCellInfoWithBlock:^(GTTableCellInfo *cellInfo, NSInteger row, NSInteger column) {
-        //
-    }];
-    info.rowInofs.firstObject.rowBackgroundColor = [UIColor greenColor];
-    self.tableView.tableInfo = info;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,4 +33,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - TableView Delegate
+-(void)tableView:(GTTableView *)tableView didSelectCellAtPosition:(GTPosition)position
+{
+    NSLog(@"tableview didSelectCell:%@", NSStringFromGTPosition(position));
+}
+
+-(void)tableview:(GTTableView *)tableview prepareTextCell:(GTCollectionViewTextCell *)textCell AtPosition:(GTPosition)position
+{
+    textCell.label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(position.row), (long)(position.column)];
+}
 @end

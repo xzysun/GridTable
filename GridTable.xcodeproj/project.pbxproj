@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		067560F31D65E1A800B1D00D /* DemoBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 067560F21D65E1A800B1D00D /* DemoBaseViewController.m */; };
 		0677C1461D5C5ED0001792FE /* GTTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0677C1451D5C5ED0001792FE /* GTTableInfo.m */; };
 		0677C1491D60A040001792FE /* DemoOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0677C1481D60A03F001792FE /* DemoOneViewController.m */; };
 		0677C14C1D60A04F001792FE /* DemoTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0677C14B1D60A04F001792FE /* DemoTwoViewController.m */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		067560F11D65E1A800B1D00D /* DemoBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoBaseViewController.h; sourceTree = "<group>"; };
+		067560F21D65E1A800B1D00D /* DemoBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoBaseViewController.m; sourceTree = "<group>"; };
 		0677C1441D5C5ED0001792FE /* GTTableInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTTableInfo.h; sourceTree = "<group>"; };
 		0677C1451D5C5ED0001792FE /* GTTableInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTTableInfo.m; sourceTree = "<group>"; };
 		0677C1471D60A03F001792FE /* DemoOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoOneViewController.h; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				06E274141D5C26FC0034D325 /* LaunchScreen.storyboard */,
 				06E274171D5C26FC0034D325 /* Info.plist */,
 				06E274061D5C26FC0034D325 /* Supporting Files */,
+				067560F11D65E1A800B1D00D /* DemoBaseViewController.h */,
+				067560F21D65E1A800B1D00D /* DemoBaseViewController.m */,
 				0677C1471D60A03F001792FE /* DemoOneViewController.h */,
 				0677C1481D60A03F001792FE /* DemoOneViewController.m */,
 				0677C14A1D60A04F001792FE /* DemoTwoViewController.h */,
@@ -204,6 +209,7 @@
 				0677C1581D61EFB9001792FE /* GTPosition.m in Sources */,
 				06E2740B1D5C26FC0034D325 /* AppDelegate.m in Sources */,
 				06E274261D5C2A430034D325 /* GTCollectionViewTextCell.m in Sources */,
+				067560F31D65E1A800B1D00D /* DemoBaseViewController.m in Sources */,
 				06E274231D5C27E70034D325 /* GTCollectionViewLayout.m in Sources */,
 				0677C1461D5C5ED0001792FE /* GTTableInfo.m in Sources */,
 				06E274201D5C27B30034D325 /* GTTableView.m in Sources */,

@@ -7,9 +7,8 @@
 //
 
 #import "DemoOneViewController.h"
-#import "GTTableView.h"
 
-@interface DemoOneViewController () <GTTableViewDelegate>
+@interface DemoOneViewController ()
 
 @property (nonatomic, strong) GTTableView *tableView;
 @end
@@ -43,15 +42,4 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-#pragma mark - TableView Delegate
--(void)tableView:(GTTableView *)tableView didSelectCellAtPosition:(GTPosition)position
-{
-    NSLog(@"tableview didSelectCell:%@", NSStringFromGTPosition(position));
-}
-
--(void)tableview:(GTTableView *)tableview prepareTextCell:(GTCollectionViewTextCell *)textCell AtPosition:(GTPosition)position
-{
-    textCell.label.text = [NSString stringWithFormat:@"%ld - %ld",(long)(position.row), (long)(position.column)];
-}
 @end

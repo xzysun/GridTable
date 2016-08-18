@@ -6,8 +6,8 @@
 //  Copyright © 2016年 AnyApps. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DemoBaseViewController.h"
 
-@interface DemoFourViewController : UIViewController
+@interface DemoFourViewController : DemoBaseViewController
 
 @end
