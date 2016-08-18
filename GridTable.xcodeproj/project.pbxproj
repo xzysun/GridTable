@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		067560F31D65E1A800B1D00D /* DemoBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 067560F21D65E1A800B1D00D /* DemoBaseViewController.m */; };
+		067560F61D65E54E00B1D00D /* DemoFiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 067560F51D65E54E00B1D00D /* DemoFiveViewController.m */; };
 		0677C1461D5C5ED0001792FE /* GTTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0677C1451D5C5ED0001792FE /* GTTableInfo.m */; };
 		0677C1491D60A040001792FE /* DemoOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0677C1481D60A03F001792FE /* DemoOneViewController.m */; };
 		0677C14C1D60A04F001792FE /* DemoTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0677C14B1D60A04F001792FE /* DemoTwoViewController.m */; };
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		067560F11D65E1A800B1D00D /* DemoBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoBaseViewController.h; sourceTree = "<group>"; };
 		067560F21D65E1A800B1D00D /* DemoBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoBaseViewController.m; sourceTree = "<group>"; };
+		067560F41D65E54E00B1D00D /* DemoFiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoFiveViewController.h; sourceTree = "<group>"; };
+		067560F51D65E54E00B1D00D /* DemoFiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoFiveViewController.m; sourceTree = "<group>"; };
 		0677C1441D5C5ED0001792FE /* GTTableInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTTableInfo.h; sourceTree = "<group>"; };
 		0677C1451D5C5ED0001792FE /* GTTableInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTTableInfo.m; sourceTree = "<group>"; };
 		0677C1471D60A03F001792FE /* DemoOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoOneViewController.h; sourceTree = "<group>"; };
@@ -103,6 +106,8 @@
 				0677C14E1D60A05B001792FE /* DemoThreeViewController.m */,
 				0677C1501D60B3B3001792FE /* DemoFourViewController.h */,
 				0677C1511D60B3B3001792FE /* DemoFourViewController.m */,
+				067560F41D65E54E00B1D00D /* DemoFiveViewController.h */,
+				067560F51D65E54E00B1D00D /* DemoFiveViewController.m */,
 			);
 			path = GridTable;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0677C14C1D60A04F001792FE /* DemoTwoViewController.m in Sources */,
+				067560F61D65E54E00B1D00D /* DemoFiveViewController.m in Sources */,
 				0677C1521D60B3B3001792FE /* DemoFourViewController.m in Sources */,
 				0677C1491D60A040001792FE /* DemoOneViewController.m in Sources */,
 				0677C1581D61EFB9001792FE /* GTPosition.m in Sources */,
